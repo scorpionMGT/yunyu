@@ -6,7 +6,7 @@
  * @Description: In User Settings Edit
  * @FilePath: \yunyu-app\src\api\config.ts
  */
-export const baseURL = 'http://116.62.5.104:7001'
+// export const baseURL = 'http://116.62.5.104:7001'
 // export const baseURL = 'http://127.0.0.1:7001'
 export const headers = {
     'Content-Type': 'application/json',

@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios'
-import { baseURL, headers } from './config'
+import { headers } from './config'
 const instance: AxiosInstance = axios.create({
-    baseURL: baseURL,
+    // baseURL: baseURL,
     headers: { ...headers },
     timeout: 1000
 })
