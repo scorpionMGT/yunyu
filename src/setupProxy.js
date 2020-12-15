@@ -1,10 +1,10 @@
 const proxy = require('http-proxy-middleware')
+require('dotenv').config({ path: '../.env' })
 
 module.exports = function(app) {
-  console.log('proxy', app)
   app.use(
-    proxy('/api', {
-      target: 'https://api.cloudcat.show',
+    proxy('/', {
+      target: process.env.BASE_URL || 'https://api.cloudcat.show',
       changeOrigin: true,
       onProxyReq: (proxyReq, req, res) => {
         console.log('proxyReq path', proxyReq.path)
