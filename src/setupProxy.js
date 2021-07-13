@@ -3,7 +3,7 @@ require('dotenv').config({ path: '../.env' })
 
 module.exports = function(app) {
   app.use(
-    proxy('/', {
+    proxy('/api', {
       target: process.env.BASE_URL || 'https://api.cloudcat.show',
       changeOrigin: true,
       onProxyReq: (proxyReq, req, res) => {
