@@ -1,6 +1,6 @@
 import React from 'react'
 import { GlobalStyle } from './common/styles'
-import { AppHeader, AppFooter, AppMain } from './components'
+import { AppMain } from './components'
 import { BrowserRouter as Router } from 'react-router-dom'
 import zhCN from 'antd/es/locale/zh_CN'
 import { ConfigProvider } from 'antd'

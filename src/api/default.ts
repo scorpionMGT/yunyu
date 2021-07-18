@@ -8,13 +8,13 @@ const instance: AxiosInstance = axios.create({
 
 instance.interceptors.request.use(
   config => {
-    console.log('config', config)
+    // console.log('config', config)
     // 发送请求前做什么
     Object.assign(config.headers, { 'Content-Type': 'application/json' })
     return config
   },
   error => {
-    console.log('error', error)
+    // console.log('error', error)
     return Promise.reject(error)
   }
 )

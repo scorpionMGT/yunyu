@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppHeaderWrapper, AppHeaderLink } from './style'
+import { AppHeaderWrapper } from './style'
 // import { Link } from 'react-router-dom'
 
 class AppHeader extends React.Component {

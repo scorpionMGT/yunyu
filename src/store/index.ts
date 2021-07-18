@@ -12,7 +12,7 @@ const middleware = [thunk, sagaMiddleware]
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middleware)))
 
-console.log('store', store, store.getState())
+// console.log('store', store, store.getState())
 sagaMiddleware.run(getSaga)
 // const store = createStore(rootReducer, applyMiddleware(thunk))
 export default store

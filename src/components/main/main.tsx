@@ -17,6 +17,11 @@ class AppMain extends React.Component {
               <About />
             </AppLayout>
           </Route>
+          <Route path="/home">
+            <AppLayout>
+              <Home type="home" />
+            </AppLayout>
+          </Route>
           <Route path="/users">
             <AppLayout>
               <Users />
