@@ -35,7 +35,6 @@ class LoginForm extends React.PureComponent<Props, State> {
 
   componentDidMount() {
     const token = sessionStorage.getItem('token') || ''
-    console.log('token', token, this.props)
     if (token) this.props.history.push('/home')
   }
 

@@ -3,8 +3,14 @@ import { AppMainWrapper } from './style'
 import { Home, About, Users, Login } from '../../views'
 import { Switch, Route } from 'react-router-dom'
 import { AppLayout } from '../../layout'
+import { RouteComponentProps, withRouter } from 'react-router-dom'
 
-class AppMain extends React.Component {
+class AppMain extends React.Component<RouteComponentProps> {
+  componentDidMount() {
+    const token = sessionStorage.getItem('token') || ''
+    if (!token) this.props.history.push('/login')
+  }
+
   render() {
     return (
       <AppMainWrapper>
@@ -36,4 +42,4 @@ class AppMain extends React.Component {
   }
 }
 
-export default AppMain
+export default withRouter(AppMain)
