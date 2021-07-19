@@ -5,7 +5,7 @@ import { login } from '../../api/login'
 import { LoginWrapper } from './style'
 import store from '../../store/index'
 import { setToken } from '../../store/action/common'
-
+import { EncryptFunc } from '../../utils/crypto'
 interface Props extends FormComponentProps {
   [propName: string]: any
 }
@@ -14,9 +14,15 @@ class LoginForm extends React.PureComponent<Props> {
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
-        const { data } = await login(values)
+        const { data } = await login({
+          username: EncryptFunc(values.username),
+          password: EncryptFunc(values.password),
+        })
         const { code } = data
-        if (code === 200) store.dispatch(setToken({ token: data.data.token }))
+        if (code === 200) {
+          store.dispatch(setToken({ token: data.data.token }))
+          sessionStorage.setItem(EncryptFunc('token'), data.data.token)
+        }
       }
     })
   }
