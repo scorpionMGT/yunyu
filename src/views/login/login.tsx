@@ -6,10 +6,15 @@ import { LoginWrapper } from './style'
 import store from '../../store/index'
 import { setToken } from '../../store/action/common'
 import { EncryptFunc } from '../../utils/crypto'
-interface Props extends FormComponentProps {
+import { RouteComponentProps, withRouter } from 'react-router-dom'
+interface Props extends FormComponentProps, RouteComponentProps {
   [propName: string]: any
 }
-class LoginForm extends React.PureComponent<Props> {
+
+interface State {
+  token: string
+}
+class LoginForm extends React.PureComponent<Props, State> {
   handleSubmit = (e: any) => {
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
@@ -21,11 +26,19 @@ class LoginForm extends React.PureComponent<Props> {
         const { code } = data
         if (code === 200) {
           store.dispatch(setToken({ token: data.data.token }))
-          sessionStorage.setItem(EncryptFunc('token'), data.data.token)
+          sessionStorage.setItem('token', data.data.token)
+          this.props.history.push('/home')
         }
       }
     })
   }
+
+  componentDidMount() {
+    const token = sessionStorage.getItem('token') || ''
+    console.log('token', token, this.props)
+    if (token) this.props.history.push('/home')
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form
     return (
@@ -58,6 +71,6 @@ class LoginForm extends React.PureComponent<Props> {
   }
 }
 
-const Login = Form.create({ name: 'normal_login' })(LoginForm)
+const Login = Form.create({ name: 'normal_login' })(withRouter<Props, any>(LoginForm))
 
 export default Login
