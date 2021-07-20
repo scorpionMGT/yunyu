@@ -1,4 +1,5 @@
 import React from 'react'
+import Cookie from 'js-cookie'
 import { Form, Icon, Input, Button } from 'antd'
 import { FormComponentProps } from 'antd/lib/form/Form'
 import { login } from '../../api/login'
@@ -27,6 +28,7 @@ class LoginForm extends React.PureComponent<Props, State> {
         if (code === 200) {
           store.dispatch(setToken({ token: data.data.token }))
           sessionStorage.setItem('token', data.data.token)
+          Cookie.set('token', data.data.token)
           this.props.history.push('/home')
         }
       }
