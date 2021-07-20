@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from 'axios'
 import { headers } from './config'
+import getAuth from './auth'
 const instance: AxiosInstance = axios.create({
   // baseURL: baseURL,
   headers: { ...headers },
@@ -10,7 +11,7 @@ instance.interceptors.request.use(
   config => {
     // console.log('config', config)
     // 发送请求前做什么
-    Object.assign(config.headers, { 'Content-Type': 'application/json' })
+    Object.assign(config.headers, { 'Content-Type': 'application/json' }, getAuth())
     return config
   },
   error => {

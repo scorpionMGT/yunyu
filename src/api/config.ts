@@ -8,11 +8,19 @@
  */
 // export const baseURL = 'http://116.62.5.104:7001'
 // export const baseURL = 'http://127.0.0.1:7001'
-export const headers = {
-    'Content-Type': 'application/json',
-    version: '1.0.0',
-    signature: 'rayvision2017',
-    platform: '2',
-    channel: '2',
-    languageFlag: '0'
+
+interface Header {
+  'Content-Type': string
+  version: string
+  signature: string
+  Authorization?: string
+}
+
+export const headers: Header = {
+  'Content-Type': 'application/json',
+  version: '1.0.0',
+  signature: 'yunyu2021',
+  // platform: '2',
+  // channel: '2',
+  // languageFlag: '0'
 }
