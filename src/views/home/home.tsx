@@ -36,13 +36,8 @@ interface Props {
   type: string
   [propname: string]: any
 }
-class Home extends React.Component<Props> {
-  componentDidMount() {
-    console.log('props', this.props)
-  }
-  render() {
-    return <HomeWrapper>Home</HomeWrapper>
-  }
+const Home = () => {
+  return <HomeWrapper>Home</HomeWrapper>
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
