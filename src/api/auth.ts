@@ -1,6 +1,8 @@
+import Cookie from 'js-cookie'
+
 const getAuth = () => {
-  const token = sessionStorage.getItem('token')
-  return token ? { Authorization: 'Bearer ' + sessionStorage.getItem('token') } : null
+  const token = Cookie.get('token')
+  return token ? { Authorization: 'Bearer ' + token } : null
 }
 
 export default getAuth

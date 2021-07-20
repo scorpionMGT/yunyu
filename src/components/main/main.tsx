@@ -3,11 +3,12 @@ import { AppMainWrapper } from './style'
 import { Home, About, Users, Login } from '../../views'
 import { Switch, Route } from 'react-router-dom'
 import { AppLayout } from '../../layout'
+import Cookie from 'js-cookie'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 
 class AppMain extends React.Component<RouteComponentProps> {
   componentDidMount() {
-    const token = sessionStorage.getItem('token') || ''
+    const token = Cookie.get('token') || ''
     if (!token) this.props.history.push('/login')
   }
 
