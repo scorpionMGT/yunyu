@@ -17,3 +17,7 @@ interface Params {
 export function login(params: Params) {
   return instance.post('/api/login', params)
 }
+
+export function register(params: Params) {
+  return instance.post('/api/register', params)
+}

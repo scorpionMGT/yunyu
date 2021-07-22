@@ -1,6 +1,6 @@
 import React from 'react'
 import { AppMainWrapper } from './style'
-import { Home, About, Users, Login } from '../../views'
+import { Home, About, Users, Login, Register } from '../../views'
 import { Switch, Route } from 'react-router-dom'
 import { AppLayout } from '../../layout'
 import Cookie from 'js-cookie'
@@ -9,7 +9,9 @@ import { RouteComponentProps, withRouter } from 'react-router-dom'
 class AppMain extends React.Component<RouteComponentProps> {
   componentDidMount() {
     const token = Cookie.get('token') || ''
-    if (!token) this.props.history.push('/login')
+    console.log('this.props', this.props.location)
+    const { location, history } = this.props
+    if (!token && location.pathname !== '/register') history.push('/login')
   }
 
   render() {
@@ -18,6 +20,9 @@ class AppMain extends React.Component<RouteComponentProps> {
         <Switch>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
           </Route>
           <Route path="/about">
             <AppLayout>

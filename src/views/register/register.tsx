@@ -2,10 +2,8 @@ import React from 'react'
 import Cookie from 'js-cookie'
 import { Form, Icon, Input, Button } from 'antd'
 import { FormComponentProps } from 'antd/lib/form/Form'
-import { login } from '../../api/login'
+import { register } from '../../api/login'
 import { LoginWrapper } from './style'
-import store from '../../store/index'
-import { setToken } from '../../store/action/common'
 import { EncryptFunc } from '../../utils/crypto'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 interface Props extends FormComponentProps, RouteComponentProps {
@@ -15,29 +13,25 @@ interface Props extends FormComponentProps, RouteComponentProps {
 interface State {
   token: string
 }
-class LoginForm extends React.PureComponent<Props, State> {
+class RegisterWrapper extends React.PureComponent<Props, State> {
   handleSubmit = (e: any) => {
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
-        const { data } = await login({
+        const { data } = await register({
           username: EncryptFunc(values.username),
           password: EncryptFunc(values.password),
         })
         const { code } = data
         if (code === 200) {
-          store.dispatch(setToken({ token: data.data.token }))
-          // sessionStorage.setItem('token', data.data.token)
-          Cookie.set('token', data.data.token)
-          this.props.history.push('/home')
+          console.log('data', data)
         }
       }
     })
   }
 
-  handleRegister = () => {
-    console.log('register')
-    this.props.history.push('/register')
+  handleLogin = () => {
+    this.props.history.push('/login')
   }
 
   componentDidMount() {
@@ -68,10 +62,10 @@ class LoginForm extends React.PureComponent<Props, State> {
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit" className="login-form-button">
-              登录
-            </Button>
-            <Button className="login-form-button" style={{ marginLeft: '20px' }} onClick={this.handleRegister}>
               注册
+            </Button>
+            <Button className="login-form-button" style={{ marginLeft: '20px' }} onClick={this.handleLogin}>
+              登录
             </Button>
           </Form.Item>
         </Form>
@@ -80,6 +74,6 @@ class LoginForm extends React.PureComponent<Props, State> {
   }
 }
 
-const Login = Form.create({ name: 'normal_login' })(withRouter<Props, any>(LoginForm))
+const Register = Form.create({ name: 'normal_login' })(withRouter<Props, any>(RegisterWrapper))
 
-export default Login
+export default Register
