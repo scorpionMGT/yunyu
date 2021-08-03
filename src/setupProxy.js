@@ -1,6 +1,7 @@
 const proxy = require('http-proxy-middleware')
 require('dotenv').config({ path: '../.env' })
 
+console.log('process.env.BASE_URL', process.env.BASE_URL)
 module.exports = function(app) {
   app.use(
     proxy('/api', {

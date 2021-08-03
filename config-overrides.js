@@ -1,4 +1,5 @@
 const path = require('path');
+// const {alias, configPaths} = require('react-app-rewire-alias')
 module.exports = {
 
   webpack: function(config, env) {
@@ -6,7 +7,6 @@ module.exports = {
         ...config.resolve.alias,
         '@': path.resolve(__dirname, 'src/'),
     }
-    console.log('config', config)
     return config;
   },
 
