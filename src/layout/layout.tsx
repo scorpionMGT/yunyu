@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppHeader, AppFooter } from '../components'
+import { AppHeader, AppFooter } from '@/components'
 
 import { AppLayoutWrapper } from './style'
 

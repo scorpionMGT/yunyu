@@ -1,8 +1,8 @@
 import React from 'react'
 import { AppMainWrapper } from './style'
-import { Home, About, Users, Login, Register } from '../../views'
+import { Home, About, Users, Login, Register } from '@/views'
 import { Switch, Route } from 'react-router-dom'
-import { AppLayout } from '../../layout'
+import { AppLayout } from '@/layout'
 import Cookie from 'js-cookie'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 
