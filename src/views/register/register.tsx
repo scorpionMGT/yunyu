@@ -2,9 +2,9 @@ import React from 'react'
 import Cookie from 'js-cookie'
 import { Form, Icon, Input, Button } from 'antd'
 import { FormComponentProps } from 'antd/lib/form/Form'
-import { register } from '../../api/login'
+import { register } from '@/api/login'
 import { LoginWrapper } from './style'
-import { EncryptFunc } from '../../utils/crypto'
+import { EncryptFunc } from '@/utils/crypto'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 interface Props extends FormComponentProps, RouteComponentProps {
   [propName: string]: any
