@@ -34,7 +34,6 @@ module.exports = {
       config.headers = {
         'Access-Control-Allow-Origin': '*',
       };
-      console.log('config', config)
       return config;
     };
   },
