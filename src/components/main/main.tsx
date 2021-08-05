@@ -9,7 +9,6 @@ import { RouteComponentProps, withRouter } from 'react-router-dom'
 class AppMain extends React.Component<RouteComponentProps> {
   componentDidMount() {
     const token = Cookie.get('token') || ''
-    console.log('this.props', this.props.location)
     const { location, history } = this.props
     if (!token && location.pathname !== '/register') history.push('/login')
   }

@@ -3,26 +3,31 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import 'antd/dist/antd.css'
 import './public-path'
+import { registerMicroApps, initGlobalState, start } from 'qiankun'
 
-function render(props: any) {
-  const { container } = props
-  ReactDOM.render(<App />, container ? container.querySelector('#root') : document.querySelector('#root'))
-}
+const actions = initGlobalState({
+  string: '',
+})
 
-if (!window.__POWERED_BY_QIANKUN__) {
-  render({})
-}
+actions.onGlobalStateChange((state, prev) => {
+  console.log('master global state change event', state, prev)
+})
 
-export async function bootstrap() {
-  console.log('[react16] react app bootstraped')
-}
+registerMicroApps([
+  {
+    name: 'app1',
+    entry: '//localhost:8001',
+    container: '#root',
+    activeRule: '/app1',
+  },
+  {
+    name: 'app2',
+    entry: '//localhost:8002',
+    container: '#root',
+    activeRule: '/app2',
+  },
+])
 
-export async function mount(props: any) {
-  console.log('[react16] props from main framework', props)
-  render(props)
-}
+start()
 
-export async function unmount(props: any) {
-  const { container } = props
-  ReactDOM.unmountComponentAtNode(container ? container.querySelector('#root') : document.querySelector('#root'))
-}
+ReactDOM.render(<App />, document.querySelector('#root'))

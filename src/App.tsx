@@ -6,9 +6,7 @@ import zhCN from 'antd/es/locale/zh_CN'
 import { ConfigProvider } from 'antd'
 import { Provider } from 'react-redux'
 import store from './store'
-import { qiankunFunc } from './qiankun'
 
-qiankunFunc()
 const App: React.FC = () => {
   return (
     <React.Fragment>

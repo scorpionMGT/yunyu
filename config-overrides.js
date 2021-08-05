@@ -1,14 +1,8 @@
 const path = require('path');
-const { name } = require("./package");
-// const {alias, configPaths} = require('react-app-rewire-alias')
 
 module.exports = {
 
   webpack: function(config, env) {
-    config.output.library = `${name}-[name]`;
-    config.output.libraryTarget = "umd";
-    config.output.jsonpFunction = `webpackJsonp_${name}`;
-    config.output.globalObject = 'window';
     config.resolve.alias = {
         ...config.resolve.alias,
         '@': path.resolve(__dirname, 'src/'),
@@ -31,9 +25,6 @@ module.exports = {
   devServer: function(configFunction) {
     return function(proxy, allowedHost) {
       const config = configFunction(proxy, allowedHost);
-      config.headers = {
-        'Access-Control-Allow-Origin': '*',
-      };
       return config;
     };
   },
