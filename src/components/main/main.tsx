@@ -10,6 +10,7 @@ class AppMain extends React.Component<RouteComponentProps> {
   componentDidMount() {
     const token = Cookie.get('token') || ''
     const { location, history } = this.props
+    console.log('location.pathname', token, location.pathname, !token && location.pathname !== '/register')
     if (!token && location.pathname !== '/register') history.push('/login')
   }
 
@@ -17,28 +18,28 @@ class AppMain extends React.Component<RouteComponentProps> {
     return (
       <AppMainWrapper>
         <Switch>
-          <Route path="/login">
+          <Route exact path="/login">
             <Login />
           </Route>
-          <Route path="/register">
+          <Route exact path="/register">
             <Register />
           </Route>
-          <Route path="/about">
+          <Route exact path="/about">
             <AppLayout>
               <About />
             </AppLayout>
           </Route>
-          <Route path="/home">
+          <Route exact path="/home">
             <AppLayout>
               <Home type="home" />
             </AppLayout>
           </Route>
-          <Route path="/users">
+          <Route exact path="/users">
             <AppLayout>
               <Users />
             </AppLayout>
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Login />
           </Route>
         </Switch>

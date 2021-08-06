@@ -42,6 +42,7 @@ class LoginForm extends React.PureComponent<Props, State> {
 
   componentDidMount() {
     const token = Cookie.get('token')
+    console.log('login', token)
     if (token) this.props.history.push('/home')
   }
 
