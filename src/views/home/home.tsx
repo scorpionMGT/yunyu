@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { HomeWrapper } from './style'
+import Codemirror from 'codemirror'
+import ReactMarkdown from 'react-markdown'
 import { bindActionCreators, Dispatch } from 'redux'
 
 const mapStateToProps = (state: any, ownProps: Props) => {
@@ -37,7 +39,12 @@ interface Props {
   [propname: string]: any
 }
 const Home = () => {
-  return <HomeWrapper>Home</HomeWrapper>
+  const input = '# This is a header\n\nAnd this is a paragraph'
+  return (
+    <HomeWrapper>
+      <ReactMarkdown># Hello, *world*!</ReactMarkdown>
+    </HomeWrapper>
+  )
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
