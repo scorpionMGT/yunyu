@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { HomeWrapper } from './style'
-import Codemirror from 'codemirror'
+import { UnControlled as CodeMirror } from 'react-codemirror2'
 import ReactMarkdown from 'react-markdown'
 import { bindActionCreators, Dispatch } from 'redux'
+
+import 'codemirror/lib/codemirror.css'
+import 'codemirror/theme/material.css'
 
 const mapStateToProps = (state: any, ownProps: Props) => {
   return {
@@ -38,11 +41,27 @@ interface Props {
   type: string
   [propname: string]: any
 }
+
 const Home = () => {
-  const input = '# This is a header\n\nAnd this is a paragraph'
+  const [mdData, setMddata] = useState<string>('')
+  const handleChange = (editor: any, data: any, value: any) => {
+    console.log('=====', mdData, value)
+    setMddata(value)
+  }
   return (
     <HomeWrapper>
-      <ReactMarkdown># Hello, *world*!</ReactMarkdown>
+      <CodeMirror
+        value="# I ♥ react-codemirror2"
+        options={{
+          mode: 'md',
+          theme: 'material',
+          lineNumbers: true,
+        }}
+        onChange={(editor, data, value) => {
+          handleChange(editor, data, value)
+        }}
+      />
+      <ReactMarkdown>{mdData}</ReactMarkdown>
     </HomeWrapper>
   )
 }
