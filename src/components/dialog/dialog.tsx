@@ -1,29 +1,46 @@
 import React from 'react'
-import { DialogWrapper } from './style'
+import { DialogWrapper, Modal, Button, Title, Content } from './style'
 
-function FancyBorder(props: any) {
-    return (
-        <div className={'FancyBorder FancyBorder-' + props.color}>
-            {props.children}
-        </div>
-    )
+interface Props {
+  handleShow: () => void
 }
 
-class Dialog extends React.Component {
-    render() {
-        return (
-            <DialogWrapper>
-                <FancyBorder color="blue">
-                    <h1 className="Dialog-title">
-                        Welcome
-                    </h1>
-                    <p className="Dialog-message">
-                        Thank you for visiting our spacecraft!
-                    </p>
-                </FancyBorder>
-            </DialogWrapper>
-        )
-    }
+const Dialog = (props: Props) => {
+  const handleClick = () => {
+    console.log('props', props.handleShow())
+  }
+  const handleOutClick = (e: any) => {
+    console.log('props', e, props.handleShow())
+  }
+  return (
+    <DialogWrapper onClick={(e: any) => handleOutClick(e)}>
+      <Modal>
+        <Title className="title">Welcome</Title>
+        <Content className="content">
+          <p>Thank you for visiting our spacecraft!</p>
+          <p>Thank you for visiting our spacecraft!</p>
+          <p>Thank you for visiting our spacecraft!</p>
+          <p>Thank you for visiting our spacecraft!</p>
+          <p>Thank you for visiting our spacecraft!</p>
+          <p>Thank you for visiting our spacecraft!</p>
+          <p>Thank you for visiting our spacecraft!</p>
+          <p>Thank you for visiting our spacecraft!</p>
+          <p>Thank you for visiting our spacecraft!</p>
+          <p>Thank you for visiting our spacecraft!</p>
+          <p>Thank you for visiting our spacecraft!</p>
+          <p>Thank you for visiting our spacecraft!</p>
+          <p>Thank you for visiting our spacecraft!</p>
+          <p>Thank you for visiting our spacecraft!</p>
+          <p>Thank you for visiting our spacecraft!</p>
+          <p>Thank you for visiting our spacecraft!</p>
+          <p>Thank you for visiting our spacecraft!</p>
+        </Content>
+        <Button className="button" onClick={() => handleClick()}>
+          知道了
+        </Button>
+      </Modal>
+    </DialogWrapper>
+  )
 }
 
 export default Dialog
