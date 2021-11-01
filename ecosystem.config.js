@@ -9,7 +9,7 @@ module.exports = {
         args: '',
         env: {
           NODE_ENV: 'production',
-          BASE_URL: 'https://api.cloudcat.show',
+          BASE_URL: 'http://127.0.0.1:7001',
         },
         env_development: {
           NODE_ENV: 'development',
@@ -17,11 +17,11 @@ module.exports = {
         },
         env_release: {
           NODE_ENV: 'release',
-          BASE_URL: 'https://api.cloudcat.show',
+          BASE_URL: 'http://127.0.0.1:7001',
         },
         env_production: {
           NODE_ENV: 'production',
-          BASE_URL: 'https://api.cloudcat.show',
+          BASE_URL: 'http://127.0.0.1:7001',
         }
       }
     ]
