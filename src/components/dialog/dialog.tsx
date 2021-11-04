@@ -21,19 +21,6 @@ const Dialog = (props: Props) => {
           <p>Thank you for visiting our spacecraft!</p>
           <p>Thank you for visiting our spacecraft!</p>
           <p>Thank you for visiting our spacecraft!</p>
-          <p>Thank you for visiting our spacecraft!</p>
-          <p>Thank you for visiting our spacecraft!</p>
-          <p>Thank you for visiting our spacecraft!</p>
-          <p>Thank you for visiting our spacecraft!</p>
-          <p>Thank you for visiting our spacecraft!</p>
-          <p>Thank you for visiting our spacecraft!</p>
-          <p>Thank you for visiting our spacecraft!</p>
-          <p>Thank you for visiting our spacecraft!</p>
-          <p>Thank you for visiting our spacecraft!</p>
-          <p>Thank you for visiting our spacecraft!</p>
-          <p>Thank you for visiting our spacecraft!</p>
-          <p>Thank you for visiting our spacecraft!</p>
-          <p>Thank you for visiting our spacecraft!</p>
         </Content>
         <Button className="button" onClick={() => handleClick()}>
           知道了

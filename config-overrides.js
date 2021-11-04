@@ -1,13 +1,21 @@
 const path = require('path');
+const webpack = require('webpack');
 // const {alias, configPaths} = require('react-app-rewire-alias')
 
 module.exports = {
 
   webpack: function(config, env) {
+    console.log('process.env.SW_ENV', process.env.SW_ENV);
     config.resolve.alias = {
         ...config.resolve.alias,
         '@': path.resolve(__dirname, 'src/'),
     }
+    config.plugins = [
+      ...config.plugins,
+      new webpack.DefinePlugin({
+            "process.env.SW_ENV": JSON.stringify(process.env.SW_ENV)
+        })
+    ]
     return config;
   },
 
