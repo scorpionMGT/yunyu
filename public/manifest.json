@@ -1,17 +1,17 @@
 {
-  "name"              : "yunyu",
-  "short_name"        : "PWA",
-  "description"       : "An example website implementing Progressive Web App technology.",
-  "start_url"         : "/",
-  "display"           : "standalone",
-  "orientation"       : "any",
-  "background_color"  : "#ACE",
-  "theme_color"       : "#ACE",
+  "name": "yunyu",
+  "short_name": "PWA",
+  "description": "An example website implementing Progressive Web App technology.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ACE",
+  "theme_color": "#ACE",
   "icons": [
-		{
-      "src"           : "/images/logo/logo.png",
-      "sizes"         : "152x152",
-      "type"          : "image/png"
+    {
+      "src": "logo.png",
+      "sizes": "152x152",
+      "type": "image/png"
     }
-	]
+  ]
 }
